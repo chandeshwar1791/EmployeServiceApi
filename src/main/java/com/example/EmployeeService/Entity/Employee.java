@@ -20,8 +20,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
+
 public class Employee {
     @Id
     @GeneratedValue
@@ -32,6 +31,23 @@ public class Employee {
     private String dept;
     @JsonProperty("salary")
     private long salary;
+    
+    public Employee() {
+		
+	}
+    
+	public Employee(int id,String name, String dept, long salary) {
+		super();
+		this.id=id;
+		this.name = name;
+		this.dept = dept;
+		this.salary = salary;
+	}
+	public Employee(String name, String dept, long salary) {
+		this.name = name;
+		this.dept = dept;
+		this.salary = salary;
+	}
 	public int getId() {
 		return id;
 	}
