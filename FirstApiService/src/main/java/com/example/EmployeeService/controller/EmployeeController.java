@@ -39,7 +39,7 @@ public class EmployeeController {
 		if(employeObj.getId()!=0)
 		{
 			logger.info("EmployeeController saveInformation Method:employeObj.getId()"+employeObj.getId());
-			return "Success";
+			return "Success :";
 		}
 		logger.info("EmployeeController saveInformation Method:get failed while saving data:"+employeObj.getId());
 		return "Failed";
