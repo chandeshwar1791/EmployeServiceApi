@@ -25,7 +25,7 @@ import com.example.EmployeeService.service.EmployeeService;
 @RestController
 public class EmployeeController {
 
-	static Logger logger = LoggerFactory.getLogger(EmployeeController.class);
+	//static Logger logger = LoggerFactory.getLogger(EmployeeController.class);
 	
 	@Autowired
 	private EmployeeService employeeService;
@@ -39,9 +39,9 @@ public class EmployeeController {
 	@PostMapping("v1/saveInformation")
 	public String saveInformation(@RequestBody Employee employee)
 	{
-		logger.info("EmployeeController saveInformation Method Started:");
+		//logger.info("EmployeeController saveInformation Method Started:");
 		String msg=employeeService.saveData(employee);
-		logger.info("EmployeeController saveInformation Method:get failed while saving data:msg:"+msg);
+		//logger.info("EmployeeController saveInformation Method:get failed while saving data:msg:"+msg);
 		return msg;
 	}
 	

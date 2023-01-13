@@ -19,7 +19,7 @@ import com.example.EmployeeService.repository.EmployeRepository;
 @Service
 public class EmployeeService {
 
-	static Logger logger = LoggerFactory.getLogger(EmployeeService.class);
+	//static Logger logger = LoggerFactory.getLogger(EmployeeService.class);
 	
 	@Autowired
 	private EmployeRepository employeRepository;
@@ -33,10 +33,10 @@ public class EmployeeService {
 	public String saveData(Employee employee) {
 		Employee employeObj = employeRepository.save(employee);
 		if (employeObj.getId() != 0) {
-			 logger.info("EmployeeService saveData Method:employeObj.getId()"+employeObj.getId());
+			//	 logger.info("EmployeeService saveData Method:employeObj.getId()"+employeObj.getId());
 			return "Success:";
 		}
-	     logger.info("EmployeeService saveInformation Method:get failed while saving data:"+employeObj.getId());
+		// logger.info("EmployeeService saveInformation Method:get failed while saving data:"+employeObj.getId());
 		return "Failed";
 	}
 
@@ -47,13 +47,13 @@ public class EmployeeService {
 	 * @return List<Employee>
 	 */
 	public List<Employee> getEmployess() {
-		 logger.info("EmployeeService getEmployess Method Started:");
+		//logger.info("EmployeeService getEmployess Method Started:");
 		List<Employee> employeObj = employeRepository.findAll();
 		if (!employeObj.isEmpty()) {
-			 logger.info("EmployeeService getEmployess Method:employeObj.getId()"+employeObj);
+			// logger.info("EmployeeService getEmployess Method:employeObj.getId()"+employeObj);
 			return employeObj;
 		}
-	     logger.info("EmployeeService getEmployess Method:get failed while saving data:"+employeObj);
+		// logger.info("EmployeeService getEmployess Method:get failed while saving data:"+employeObj);
 		return new ArrayList<>();
 	}
 }
