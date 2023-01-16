@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import com.example.EmployeeService.Entity.Employee;
 import com.example.EmployeeService.repository.EmployeRepository;
-import com.example.EmployeeService.service.EmployeeService;
+import com.example.EmployeeService.service.EmployeeServiceImpl;
 
 //@RunWith(SpringRunner.class)
 @SpringBootTest
@@ -23,7 +23,7 @@ class FirstApiServiceApplicationTests {
 	}
 
 	@Autowired 
-	private EmployeeService employeeService;
+	private EmployeeServiceImpl employeeService;
 
 	@MockBean
 	private EmployeRepository employeRepository;

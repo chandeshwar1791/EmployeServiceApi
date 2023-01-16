@@ -1,20 +1,15 @@
 package com.example.EmployeeService.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.EmployeeService.Entity.Employee;
-import com.example.EmployeeService.repository.EmployeRepository;
-import com.example.EmployeeService.service.EmployeeService;
-
+import com.example.EmployeeService.Entity.Employee; 
+import com.example.EmployeeService.service.EmployeeServiceImpl;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * 
@@ -28,8 +23,14 @@ public class EmployeeController {
 	//static Logger logger = LoggerFactory.getLogger(EmployeeController.class);
 	
 	@Autowired
-	private EmployeeService employeeService;
+	private EmployeeServiceImpl employeeService; 
 	
+	/*@Autowired
+    private JWTUtility jwtUtil;
+	
+    @Autowired
+    private AuthenticationManager authenticationManager;*/
+    
 	/**
 	 * @author Chandeshwar Thakur
 	 * @apiNote Method saveInformation
@@ -52,10 +53,28 @@ public class EmployeeController {
 	 * @return String
 	 */
 	@GetMapping("v1/employees")
-	public List<Employee> getEmployess()
+	public String getEmployess()
 	{
 		//logger.info("EmployeeController getEmployess Method Started:");
-		
-		return employeeService.getEmployess();
+		String json=null;
+		try {
+			json=new ObjectMapper().writeValueAsString(employeeService.getEmployess());
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			return "Data Not Found under Database";
+		}
+		return json;
 	}
+	
+	/*@PostMapping("/authenticate") 
+    public String generateToken(@RequestBody AuthRequest authRequest) throws Exception {
+        try {
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(authRequest.getUserName(), authRequest.getPassword())
+            );
+        } catch (Exception ex) {
+            throw new Exception("inavalid username/password");
+        }
+        return jwtUtil.generateToken(authRequest.getUserName());
+    }*/
 }
